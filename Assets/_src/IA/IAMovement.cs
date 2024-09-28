@@ -7,53 +7,19 @@ public class IAMovement : MonoBehaviour
 {
 
     private NavMeshAgent nav;
-    [Header("Enemy info")]
-    public float AttackRange;
-    public float AttackSpeed;
-    public float currentAttackCooldown;
-    public int[] AttackDamage;
-    public bool canAttack;
-    [Header("Player info")]
-    public Transform Player;
 
     void Start()
     {
         nav = GetComponent<NavMeshAgent>();
-        nav.stoppingDistance = AttackRange;
     }
-
-
-    void Update()
+    public bool Chase(Transform target)
     {
-        if (Player == null) return;
-        Chase();
-        if (Vector3.Distance(transform.position , Player.position) > AttackRange)
+        if (!target) return false;
+        if (Vector3.Distance(transform.position,target.position)> nav.stoppingDistance)
         {
-            if (canAttack)
-            {
-                Attack();
-            }
-            else
-            {
-                currentAttackCooldown -= Time.deltaTime;
-                if (currentAttackCooldown <= 0)
-                {
-                    canAttack = true;
-                    currentAttackCooldown = AttackSpeed;
-                }
-            }
+            nav.SetDestination(target.position);
+            return true;
         }
-
-
-
-    }
-    void Attack()
-    {
-        canAttack = false;
-        Player.GetComponent<IDamageble>().TakeDamage(Random.Range(AttackDamage[0], AttackDamage[1]));
-    }
-    void Chase()
-    {
-        nav.SetDestination(Player.position);
+        return false;
     }
 }
