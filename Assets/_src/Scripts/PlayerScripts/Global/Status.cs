@@ -9,7 +9,7 @@ public class Status
     public int MagicResist;
    public void Init()
     {
-        Health = 100;
+        Health = 99999999;
         Armor = 20;
         MagicResist = 10;
     }

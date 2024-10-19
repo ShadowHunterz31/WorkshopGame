@@ -15,7 +15,8 @@ GameObject:
   - component: {fileID: 198039085423140307}
   - component: {fileID: 7796159544143736967}
   - component: {fileID: 5851180462963149443}
-  m_Layer: 7
+  - component: {fileID: 6539007520649417722}
+  m_Layer: 9
   m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47,8 +48,8 @@ NavMeshAgent:
   m_GameObject: {fileID: 3949958407685679697}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
-  m_Speed: 6
+  m_Radius: 0.3
+  m_Speed: 0
   m_Acceleration: 40
   avoidancePriority: 50
   m_AngularSpeed: 800
@@ -59,7 +60,7 @@ NavMeshAgent:
   m_Height: 2
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
+  m_ObstacleAvoidanceType: 0
 --- !u!114 &7010394816060938403
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -73,7 +74,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   brain: {fileID: 11400000, guid: 2dbbaaffad62b3845b146ab82d3b4718, type: 2}
+  playerTransform: {fileID: 0}
   GFXTransform: {fileID: 4747636744052000365}
+  referenceOk: 0
 --- !u!114 &5308841579151064094
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -102,7 +105,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65a988bb32664c649b1ff5ecb36f3057, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 0}
 --- !u!114 &7796159544143736967
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -115,10 +117,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db207cad828714f48a389c1b747cebf9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  brain: {fileID: 11400000, guid: 2dbbaaffad62b3845b146ab82d3b4718, type: 2}
   canAttack: 0
   currentAttackCooldown: 0
-  Player: {fileID: 0}
 --- !u!114 &5851180462963149443
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -131,6 +131,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c7f2ca7e183c8c4b85019c4c4801fcb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  states: 0
+--- !u!136 &6539007520649417722
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3949958407685679697}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &3928343249561445441
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -45,6 +45,7 @@ public class IAController : MonoBehaviour
 
         brain = pbarin;
         IACombatScript.Init(brain);
+        IAMovementScript.Init(brain);
 
         InstantiateGraphics();
         FindPlayerReference();
@@ -52,6 +53,9 @@ public class IAController : MonoBehaviour
     }
     void ChasingBehaviour()
     {
+        if (playerTransform == null) return;
+        if (IAMovementScript == null) return;
+
         var sucess = IAMovementScript.Chase(playerTransform);
         if (sucess == false)
         {
@@ -73,7 +77,9 @@ public class IAController : MonoBehaviour
 
     void FindPlayerReference()
     {
-        playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
+        var playerReference = GameObject.FindGameObjectWithTag("Player");
+        if (playerReference == null) return;
+        playerTransform = playerReference.transform;
     }
 
 }
