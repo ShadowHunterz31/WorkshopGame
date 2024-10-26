@@ -11,3 +11,7 @@ using UnityEngine;
     {
 
     }
+    public interface ITargetWeapon
+    {
+    public void Init(Transform ptarget);
+    }

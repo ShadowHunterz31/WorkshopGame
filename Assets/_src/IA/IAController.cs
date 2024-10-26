@@ -13,6 +13,8 @@ public class IAController : MonoBehaviour
     private IAStates IAStatesScript;
     private IAMovement IAMovementScript;
     private IACombat IACombatScript;
+    private CaractherStatusManager IAStatusScript;
+    private DamageHandler IADamageHandlerScript;
 
     [Header("Transform Data")]
     [SerializeField] private Transform GFXTransform;
@@ -42,13 +44,20 @@ public class IAController : MonoBehaviour
         IAStatesScript = GetComponent<IAStates>();
         IAMovementScript = GetComponent<IAMovement>();
         IACombatScript = GetComponent<IACombat>();
+        IAStatusScript = GetComponent<CaractherStatusManager>();
+        IADamageHandlerScript = GetComponent<DamageHandler>();
+
 
         brain = pbarin;
         IACombatScript.Init(brain);
         IAMovementScript.Init(brain);
+        IAStatusScript.InitStatus(brain.Status);
 
         InstantiateGraphics();
         FindPlayerReference();
+
+        IADamageHandlerScript.Init();
+
         referenceOk = true;
     }
     void ChasingBehaviour()
@@ -72,7 +81,8 @@ public class IAController : MonoBehaviour
     }
     void InstantiateGraphics()
     {
-        Instantiate(brain.GFX, GFXTransform);
+        var gfx = Instantiate(brain.GFX, GFXTransform);
+        gfx.transform.parent = this.transform;
     }
 
     void FindPlayerReference()

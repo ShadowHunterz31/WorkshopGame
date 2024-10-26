@@ -1605,6 +1605,7 @@ GameObject:
   - component: {fileID: 1830395383}
   - component: {fileID: 1830395385}
   - component: {fileID: 1830395386}
+  - component: {fileID: 1830395387}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -1678,8 +1679,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   status:
-    Health: 0
-    Armor: 0
+    Health: 100
+    Armor: 200
     MagicResist: 0
 --- !u!114 &1830395386
 MonoBehaviour:
@@ -1695,9 +1696,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weapons:
   - {fileID: 11400000, guid: dc52804975dddb6498789d7307ffd19b, type: 2}
+  - {fileID: 11400000, guid: 3055616c8f6c194428a54efcdaa8fe61, type: 2}
   enemieLayer:
     serializedVersion: 2
     m_Bits: 512
+--- !u!114 &1830395387
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1830395381}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01d8616c1c6c6f14d892cfcb92c01739, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myRenderer: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

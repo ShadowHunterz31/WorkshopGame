@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class PlayerWeapons : MonoBehaviour
 {
-    public WeaponScriptable[] weapons;
+    public List<WeaponScriptable> weapons;
     public LayerMask enemieLayer;
+    public WeaponScriptable[] Allweapons;
 
     public void AddWeapon(WeaponScriptable weapon) 
     {
-        
+        weapons.Add(Allweapons[Random.Range(0 ,Allweapons.Length)]);
     }
     public void UpgradeWeapom(WeaponScriptable weapon)
     {
@@ -28,7 +29,7 @@ public class PlayerWeapons : MonoBehaviour
 
     public void UseTargetWeapons()
     {
-        if (weapons.Length <= 0) return;
+        if (weapons.Count <= 0) return;
         foreach (WeaponScriptable weapon in weapons)
         {
             if (weapon.type != WeapontType.NeedTarget) continue;
@@ -51,7 +52,7 @@ public class PlayerWeapons : MonoBehaviour
             }
 
             var projectile = Instantiate(weapon.proj, transform.position, Quaternion.identity);
-            projectile.GetComponent<TargetProjectile>().Init(closestTarget.transform);
+            projectile.GetComponent<ITargetWeapon>().Init(closestTarget.transform);
         }
     }
 }
